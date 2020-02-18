@@ -26,13 +26,15 @@ class Manipulator:
         # self.disable_all_joint()
         self.get_manip_params()
         self.init_services()
-        
+
         rospy.Subscriber('manipulator_mode', UInt8,
                          callback=self.home_position_cb)
         rospy.Subscriber('/joint_path_command', JointTrajectory,
                          callback=self.moveit_commander)
         rospy.Subscriber('/arka_controller/command',
                          JointTrajectory, callback=self.jog_arm_commander)
+        rospy.Service('/mercury/manipulator/enable_arm',
+                      SetEnabled, self._enable_arm_led_srv)
 
     def get_manip_params(self):
         self.joints_ratio = {}
@@ -47,13 +49,14 @@ class Manipulator:
         rospy.Service('/mrl_manipulator_karo/set_emergency_stop_ocu',
                       SetEnabled, self.manip_emergency_cb)
 
-
     def manip_emergency_cb(self, req):
         self.manipulator_joy_commander.manipulator_protocol.emergency_stop.emergency_stop = 1 if req.enabled else 0
 
     def home_position_cb(self, msg):
         self.manipulator_joy_commander.manipulator_protocol.home_position.home_position = msg.data
 
+    def _enable_arm_led_srv(self, req):
+        self.manipulator_joy_commander.manipulator_protocol.set_led.set_led = 1 if req.enabled else 0
 
     def stop_semi_joints(self):
         self.manipulator_joy_commander.manipulator_protocol.direction.joint1 = 0
@@ -187,7 +190,6 @@ class Manipulator:
         rospy.logerr('1 {}, 2 {},3 {}  '.format(self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint1,
                                                 self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint2, self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint3))
 
-
     @staticmethod
     def rad_per_secn_rpm(value):
         return value*60 / (pi * 2)
@@ -198,7 +200,6 @@ class Manipulator:
             self.manipulator_joy_commander.manipulator_protocol.send_data_old_main_board()
             self.manipulator_joy_commander.manipulator_protocol.send_sensor_board_manipulator_data()
             rate.sleep()
-
 
 
 if __name__ == "__main__":
