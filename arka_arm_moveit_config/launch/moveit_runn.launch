@@ -1,0 +1,9 @@
+<launch>  
+  <include file="$(find arka_arm_moveit_config)/launch/demo2.launch">
+    <arg name="sim" value="false" />
+    <arg name="robot_ip" value="192.168.10.10"/>
+  </include>
+
+
+</launch>
+

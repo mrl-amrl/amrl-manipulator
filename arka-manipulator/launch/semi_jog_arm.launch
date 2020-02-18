@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find arka_manipulator)/launch/feedback.launch"/>
+  <include file="$(find arka_manipulator)/launch/manual.launch"/>
+  <include file="$(find arka_arm_moveit_config)/launch/moveit_runn.launch"/>
+
+  <arg name="jog_arm_config_path" default="$(find arka_manipulator)/config/arka_jog_arm_config.yaml" />
+  <node name="jog_server" pkg="moveit_jog_arm" type="jog_server" output="screen">
+    <param name="parameter_ns" type="string" value="jog_server" />
+    <rosparam command="load" file="$(arg jog_arm_config_path)" />
+  </node>
+</launch>

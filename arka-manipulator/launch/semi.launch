@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find arka_manipulator)/launch/feedback.launch"/>
+    <include file="$(find arka_manipulator)/launch/manual.launch"/>
+    <include file="$(find arka_arm_moveit_config)/launch/moveit_runn.launch"/>
+</launch>

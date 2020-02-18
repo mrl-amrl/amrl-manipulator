@@ -1,0 +1,30 @@
+
+
+#8th index is RT_LT increase RT decrease LT
+
+joint1: {'axes_or_button': 'axes','axes_index': 8 , 'max_speed' : 8000 , 'ratio': 2825 }
+joint2: {'axes_or_button': 'axes', 'axes_index': 4 , 'max_speed' : 8000 , 'ratio': 3900}
+joint3: {'axes_or_button': 'axes', 'axes_index': 1, 'max_speed': 8000 , 'ratio': 2825}
+prismatic: {'axes_or_button': 'axes', 'axes_index': 7, 'max_speed': 5200 }
+
+#joint4 is tilt(up and down)
+joint4: {'axes_or_button': 'button','increase_index': 3, 'decrease_index': 0,'max_speed': 1000,'ratio': 1 } 
+
+# joint5 is wrist(move cyrcle)
+joint5: {'axes_or_button': 'button','increase_index': 5, 'decrease_index': 4,'max_speed': 2500}
+gripper: {'axes_or_button': 'axes', 'axes_index': 6 , 'max_speed': 2500}
+sensor_box: {'axes_or_button': 'button', 'increase_index' : 1 ,'decrease_index': 2, 'max_speed': 2500}
+
+#actions below just work in single_mode
+# arm_led: {'axes_or_button': 'button','single_mode': True, 'single_mode_index': 10 }
+# hazmat_enable: {'axes_or_button': 'button','single_mode': True, 'single_mode_index': 9}
+# reset_motors: {'axes_or_button': 'button',  'single_mode': True, 'single_mode_index': 8}
+
+#reset_motors_main_board: {'axes_or_button': 'button', 'single_mode': True,'single_mode_index': 10}
+semi_x: {'axes_or_button': 'axes','axes_index': 4 }
+semi_y: {'axes_or_button': 'axes','axes_index': 8 }
+semi_z: {'axes_or_button': 'axes','axes_index': 1 }
+# enable_disable_semi: {'axes_or_button': 'button','single_mode': True, 'single_mode_index': 7}
+
+# Important point joint4 is tilt
+# joint5 is wrist

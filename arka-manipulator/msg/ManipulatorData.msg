@@ -1,0 +1,19 @@
+std_msgs/Header header
+
+int16 joint1_speed
+int16 joint1_direction
+int16 joint2_speed
+int16 joint2_direction
+int16 joint3_speed
+int16 joint3_direction
+int16 joint4_speed
+int16 joint4_direction
+int16 joint5_speed
+int16 joint5_direction
+int16 prismatic_direction
+int16 gripper_speed
+int16 gripper_direction
+int16 arm_led
+int16 reset_motors
+int16 sensor_box_speed
+int16 sensor_box_direction

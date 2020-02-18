@@ -1,0 +1,21 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - arka_joint1
+      - arka_joint2
+      - arka_joint3
+      - arka_joint4
+      - arka_joint5
+  - name: fake_hand_controller
+    joints:
+      - arka_joint5
+      - arka_finger1
+      - arka_finger2
+  - name: fake_arm_hand_controller
+    joints:
+      - arka_joint1
+      - arka_joint2
+      - arka_joint3
+      - arka_joint4
+      - arka_joint5
+      - arka_finger2

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: arka_urdf_di
+    relative_path: robots/arka_urdf_di.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/arka_urdf_di.srdf
+  CONFIG:
+    author_name: Amir sharifi
+    author_email: ami_rsh@outlook.com
+    generated_timestamp: 1561236151

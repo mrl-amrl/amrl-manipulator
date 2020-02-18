@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+<node pkg="arka_arm_controller" name="arka_arm_controller" type="manipulator_controller.py" output="screen" respawn="false">
+        <param name=  "topic_in"    type=     "string"       value =  "/joint_states" /> 
+        	<param name= "pub_topic"    type= "string"       value = "/feedback_states" />         
+	  </node>
+</launch>

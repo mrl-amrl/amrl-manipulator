@@ -1,0 +1,31 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  axes_names: left_x_axes, left_y_axes, lt_axes, right_x_axes, right_y_axes, rt_axes,arrow_x,arrow_y
+  axes_threshold: 0.1
+  axes_to_button: ""
+  button_names:
+    a_button, b_button, x_button, y_button, lb_button, rb_button, back_button,
+    start_button, home_button, left_axes_button, right_axes_button
+  button_to_axes: a_button, b_button, x_button, y_button, lb_button,rb_button, home_button, left_axes_button
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      axes_names: left_x_axes, left_y_axes, lt_axes, right_x_axes, right_y_axes, rt_axes,arrow_x,arrow_y
+      axes_threshold: 0.1
+      axes_to_button: ""
+      button_names:
+        a_button, b_button, x_button, y_button, lb_button, rb_button,
+        back_button, start_button, home_button, left_axes_button, right_axes_button
+      button_to_axes: a_button, b_button, x_button, y_button, lb_button, rb_button, home_button, left_axes_button
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      map_axes: (5,-1.0,1.0,1.0,0.0)(2,-1.0,1.0,-1.0,0.0)
+      name: Default
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      state: true
+      type: ""
+    state: []
+  map_axes: (5,-1.0,1.0,1.0,0.0)(2,-1.0,1.0,-1.0,0.0)
+state: []

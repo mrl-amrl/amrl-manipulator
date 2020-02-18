@@ -1,0 +1,9 @@
+<launch>
+
+  <!-- joint_trajectory_action: provides actionlib interface for high-level robot control -->
+  <arg name="robot_ip" default="192.168.10.10" />
+  <node pkg="industrial_robot_client" type="joint_trajectory_action" name="joint_trajectory_action"/>
+  <!-- <node pkg="manipulator_controller" type="manipulator_controller.py" name="manipulator_controller"/>	 -->
+
+</launch>
+
