@@ -41,7 +41,6 @@ class Manipulator:
         for i in range(1, 5):
             self.joints_ratio['joint{}'.format(i)] = rospy.get_param(
                 node_name + '/joint{}/ratio'.format(i))
-        logger.log_error(self.joints_ratio)
         self.is_semi_enable = rospy.get_param(
             node_name + '/is_semi_enable', False)
 
