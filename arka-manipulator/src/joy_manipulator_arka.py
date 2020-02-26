@@ -13,7 +13,6 @@ from arka_manipulator.msg import ManipulatorData
 from mercury_common.srv import SetEnabled
 from manipulator_protocol import _ManiPulatorProtocol
 from mercury import Joy as MercuryJoy
-from mercury import logger
 
 node_name = 'arka_manipulator'
 
@@ -31,7 +30,8 @@ class JoyArmArka:
         self.manipulator_protocol = _ManiPulatorProtocol(
             self.controller_ip,
             self.main_ip, self.main_port,
-            self.sensor_ip, self.sensor_port)
+            self.sensor_ip, self.sensor_port
+        )
         self.is_arm_enable = False
         self.semi_status = False
         self.hazmat_pressed = False
@@ -81,8 +81,6 @@ class JoyArmArka:
 
     def _dynamic_params(self, config, level):
         self._config = config
-        logger.log_warn(config['joint1_inc_axes'])
-        logger.log_warn(config['joint1_dec_axes'])
         self._max_speeds = {'joint1': config['joint1_max_speed'],
                             'joint2': config['joint2_max_speed'],
                             'joint3': config['joint3_max_speed'],
@@ -123,10 +121,8 @@ class JoyArmArka:
         self.is_arm_enable = req.enabled
         self.arm_controller.unsubscribe_all()
         if req.enabled:
-            logger.log_error("arm enable")
             self.arm_controller.subscribe(self._joy_callback)
             for key in self._manual_callbacks:
-                logger.log_error(self._config[key])
                 if key in ['enable_disable_semi_btn', 'arm_led_btn']:
                     self.arm_controller.on_pressed(
                         self._config[key], self._manual_callbacks[key])
@@ -156,7 +152,6 @@ class JoyArmArka:
                 elif str(keys).endswith('axes'):
                     self.arm_controller.on_changed(
                         self._config[keys], self._semi_callbacks[keys])
-            logger.log_warn('Semi mode')
         elif not self.semi_status and self.is_arm_enable:
             self.arm_controller.unsubscribe_all()
             self.arm_controller.subscribe(self._joy_callback)
@@ -167,7 +162,6 @@ class JoyArmArka:
                 elif str(keys).endswith('axes'):
                     self.arm_controller.on_changed(
                         self._config[keys], self._manual_callbacks[keys])
-            logger.log_warn('Manual mode')
 
     def _enable_semi_srv_cb(self, req):
         self.semi_status = req.enabled

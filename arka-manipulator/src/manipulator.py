@@ -33,7 +33,7 @@ class Manipulator:
                          callback=self.moveit_commander)
         rospy.Subscriber('/arka_controller/command',
                          JointTrajectory, callback=self.jog_arm_commander)
-        rospy.Service('/mercury/manipulator/enable_arm',
+        rospy.Service('/mercury/power/arm_led',
                       SetEnabled, self._enable_arm_led_srv)
 
     def get_manip_params(self):
@@ -57,6 +57,7 @@ class Manipulator:
 
     def _enable_arm_led_srv(self, req):
         self.manipulator_joy_commander.manipulator_protocol.set_led.set_led = 1 if req.enabled else 0
+        return req.enabled
 
     def stop_semi_joints(self):
         self.manipulator_joy_commander.manipulator_protocol.direction.joint1 = 0
