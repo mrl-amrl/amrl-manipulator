@@ -104,7 +104,7 @@ class JointStatePublisher:
             self.manual_calibrated_dic.get('joint3_calibrated')*(-1)))
         joint_msg.position.append(self.degree_to_radian(
             self.manual_calibrated_dic.get('joint4_calibrated')))
-        logger.log_error(self.manual_calibrated_dic.get('joint4_calibrated'))
+        # logger.log_error(self.manual_calibrated_dic.get('joint4_calibrated'))
         # fake_position
         joint_msg.position.extend([0, 0, 0])
         self.joints_pub.publish(joint_msg)

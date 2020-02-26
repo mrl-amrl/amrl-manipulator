@@ -67,7 +67,6 @@ class Manipulator:
         self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint3 = 0
 
     def moveit_commander(self, msg_list):
-        rospy.logerr(msg_list)
         if self.manipulator_joy_commander.is_arm_enable and self.manipulator_joy_commander.semi_status:
             # if not self.is_manip_enable:
             # msg_list = JointTrajectory()
@@ -202,6 +201,7 @@ class Manipulator:
 
 if __name__ == "__main__":
     rospy.init_node(node_name, anonymous=True)
+    logger.stack_print(True)
     manipulator = Manipulator()
     try:
         # rospy.spin()
