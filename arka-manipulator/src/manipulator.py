@@ -148,7 +148,7 @@ class Manipulator:
                     msg.velocities[2]) * self.joints_ratio.get('joint3')
                 rospy.logwarn('msg V {} ,current V {}'.format(
                     msg.velocities, _current_speed_dic))
-                # joint1 azinja
+                # joint1 
                 if _current_speed_dic.get('joint1') == 0:
                     self.manipulator_joy_commander.manipulator_protocol.direction.joint1 = STOP_DIRECTION
                 elif _current_speed_dic.get('joint1') < 0:
@@ -183,9 +183,7 @@ class Manipulator:
                 # rospy.sleep(a)
                 self.display_data()
                 # self.stop_semi_joints()
-
-                # rospy.logwarn('sleep time is {},time from start {}'.format(_sleep_time,_sleep_time,msg.time_from_start)) ta inja
-
+                # rospy.logwarn('sleep time is {},time from start {}'.format(_sleep_time,_sleep_time,msg.time_from_start)) 
     def display_data(self):
         rospy.logerr('1 {}, 2 {},3 {}  '.format(self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint1,
                                                 self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint2, self.manipulator_joy_commander.manipulator_protocol.angularspeed.joint3))

@@ -83,7 +83,7 @@ class JointStatePublisher:
 
     def manual_calibration_cb(self, req):
         if req.enabled:
-            for i in range(1, 4):
+            for i in range(1, 5):
                 self.manual_calibration_dic['joint{}_calibration'.format(
                     i)] = self.elec_position.get('joint{}_elec'.format(i))
             self.write_yaml_file()
@@ -102,7 +102,9 @@ class JointStatePublisher:
             self.manual_calibrated_dic.get('joint2_calibrated')))
         joint_msg.position.append(self.degree_to_radian(
             self.manual_calibrated_dic.get('joint3_calibrated')*(-1)))
-
+        joint_msg.position.append(self.degree_to_radian(
+            self.manual_calibrated_dic.get('joint4_calibrated')))
+        logger.log_error(self.manual_calibrated_dic.get('joint4_calibrated'))
         # fake_position
-        joint_msg.position.extend([0, 0, 0, 0])
+        joint_msg.position.extend([0, 0, 0])
         self.joints_pub.publish(joint_msg)
