@@ -1,0 +1,8 @@
+<launch>
+    <include file="$(find arka_arm_moveit_config)/launch/demo.launch">
+    </include>
+    <include file="$(find openni2_launch)/launch/openni2_tf_prefix.launch">
+    </include>
+    <node pkg="tf" type="static_transform_publisher" name="camera_tf_broadcaster" args="0 0 0 3.14 0 1.57 arka_link5 camera_base_link 100" />
+    <node pkg="tf" type="static_transform_publisher" name="depth_tf_broadcaster" args="0 0 0.2 0 0 0 camera_base_link camera_link 100" />
+</launch>
